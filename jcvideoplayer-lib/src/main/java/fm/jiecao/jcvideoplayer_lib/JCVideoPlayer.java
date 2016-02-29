@@ -21,7 +21,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.nostra13.universalimageloader.core.ImageLoader;
+import com.koushikdutta.ion.Ion;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -162,7 +162,7 @@ public class JCVideoPlayer extends FrameLayout implements View.OnClickListener, 
         ivStart.setVisibility(View.VISIBLE);
         llBottomControl.setVisibility(View.INVISIBLE);
         pbBottom.setVisibility(View.VISIBLE);
-        ImageLoader.getInstance().displayImage(thumb, ivThumb, Utils.getDefaultDisplayImageOption());
+        Ion.with(ivThumb).load(thumb);
         CURRENT_STATE = CURRENT_STATE_NORMAL;
         setTitleVisibility(View.VISIBLE);
         if (uuid.equals(JCMediaManager.intance().uuid)) {
@@ -725,7 +725,7 @@ public class JCVideoPlayer extends FrameLayout implements View.OnClickListener, 
     }
 
     private void loadMp3Thum() {
-        ImageLoader.getInstance().displayImage(thumb, ivCover, Utils.getDefaultDisplayImageOption());
+        Ion.with(ivCover).load(thumb);
     }
 
     /**
